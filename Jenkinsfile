@@ -1,27 +1,17 @@
 pipeline{
   agent any
+  tools{
+    maven 'maven3'
+  }
 
   stages{
 
-    stage("Git Integration"){
+    stage("Maven build"){
       steps{
-        sh "echo hai"
-
-
-
+        script{
+          sh 'mvn clean package'
+        }
       }
-
-
     }
-
-
-
-
   }
-
-
-
-
-
-
 }
