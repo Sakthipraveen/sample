@@ -4,8 +4,12 @@ pipeline{
   stages{
 
     stage("Git Integration"){
+      steps{
+        sh "echo hai"
 
-      sh "echo hai"
+
+
+      }
 
 
     }
