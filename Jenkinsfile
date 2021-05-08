@@ -8,10 +8,7 @@ pipeline {
         stage('build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    // Optionally use a Maven environment you've configured already
-                    withMaven(maven:'Maven3') {
-                        sh 'mvn -e install -DskipTests=true sonar:sonar -Psonar'
-                    }
+                  sh 'mvn -e install -DskipTests=true sonar:sonar -Psonar'
                 }
             }
         }
