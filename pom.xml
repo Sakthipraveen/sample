@@ -6,6 +6,12 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>my-app</name>
+  <properties>
+     <!-- Optional URL to server. Default value is http://localhost:9000 -->
+     <sonar.host.url>
+       http://127.0.0.1:9000
+     </sonar.host.url>
+  </properties>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
