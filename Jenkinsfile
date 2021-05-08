@@ -10,7 +10,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven3') {
-                        sh 'mvn clean package sonar:sonar'
+                        sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
                     }
                 }
             }
