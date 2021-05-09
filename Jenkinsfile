@@ -7,7 +7,7 @@ pipeline {
 
         stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonar',credentialsId: 'jenkins-sonar') {
+                withSonarQubeEnv(credentialsId: 'jenkins-sonar') {
                   sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
                 }
             }
