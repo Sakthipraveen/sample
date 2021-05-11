@@ -8,8 +8,11 @@ pipeline {
         stage('build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                  sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
+                  script{
+                    sh 'mvn sonar:sonar'
+                  }
                 }
+                sh "mvn clean install"
             }
         }
         stage("Quality Gate") {
