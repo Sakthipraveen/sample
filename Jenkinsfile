@@ -2,13 +2,11 @@ pipeline {
     agent any
     tools{
       maven 'Maven3'
+      sonar 'sonar'
     }
     stages {
 
         stage('build && SonarQube analysis') {
-          environment {
-            scannerHome = tool 'sonar'
-            }
             steps {
                 withSonarQubeEnv('sonar') {
                     // Optionally use a Maven environment you've configured already
