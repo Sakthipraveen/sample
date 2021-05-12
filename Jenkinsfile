@@ -7,12 +7,12 @@ pipeline {
 
         stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonar') {
+                //withSonarQubeEnv('sonar') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven3') {
                         sh 'mvn clean install package'
                     }
-                }
+                //}
             }
         }
         stage("Quality Gate") {
