@@ -10,8 +10,7 @@ pipeline {
                 withSonarQubeEnv('sonar') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven3') {
-                        //sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=Jenkins -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.login=b84c144ecbd38af693390f239414b4b68cc32ede -Dsonar.analysis.mode= -Dsonar.scm.enabled=false -Dsonar.scm-stats.enabled=false -Dsonar.working.directory=/mypath/target/.sonar'
+                        sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
                     }
                 }
             }
