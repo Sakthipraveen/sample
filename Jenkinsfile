@@ -14,7 +14,7 @@ pipeline {
                         //sh 'mvn install -DskipTests=true sonar:sonar -Psonar'
                         mvn sonar:sonar \
                         -Dsonar.projectKey=Jenkins \
-                        -Dsonar.host.url=http://127.0.0.1:9000 \
+                        -Dsonar.host.url='http://127.0.0.1:9000' \
                         -Dsonar.login=b84c144ecbd38af693390f239414b4b68cc32ede
                       }
                     }
