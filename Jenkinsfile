@@ -10,9 +10,10 @@ pipeline {
                 withSonarQubeEnv('sonar') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven3') {
-                        bat 'mvn clean install -DskipTests=true sonar:sonar -Psonar'
+                        bat 'mvn sonar:sonar'
                     }
                 }
+                bat 'mvn clean install package build'
             }
         }
         stage("Quality Gate") {
