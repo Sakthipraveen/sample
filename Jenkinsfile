@@ -13,7 +13,7 @@ pipeline {
                         bat 'mvn sonar:sonar'
                     }
                 }
-                bat 'mvn clean install package build'
+                bat 'mvn clean install package'
             }
         }
         stage("Quality Gate") {
