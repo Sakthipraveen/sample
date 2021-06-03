@@ -17,7 +17,7 @@ pipeline{
 
     stage('static code analysis and maven build'){
       steps{
-        environment{
+        agent{
           docker{
             image 'maven:3-alpine'
             args '$HOME/.m2:$ROOT/.m2'
