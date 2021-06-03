@@ -1,4 +1,4 @@
-#currentBuild.displayName = currentBuild.number
+currentBuild.displayName= "Jenkins "+ currentBuild.number
 
 
 pipeline{
