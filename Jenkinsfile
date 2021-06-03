@@ -8,10 +8,10 @@ pipeline{
 
     stage('git integation'){
       steps{
-        script{
+
           git url: 'https://github.com/Sakthipraveen/sample.git'
-          
-        }
+
+        
       }
     }
   }
