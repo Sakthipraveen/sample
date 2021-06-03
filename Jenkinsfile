@@ -16,14 +16,14 @@ pipeline{
     }
 
     stage('static code analysis and maven build'){
-      steps{
-        agent{
-          docker{
-            image 'maven:3-alpine'
-            args '$HOME/.m2:$ROOT/.m2'
-          }
+      agent{
+        docker{
+          image 'maven:3-alpine'
+          args '-v $HOME/.m2:$root/.m2'
         }
+      }
 
+      steps{
         script{
           sh 'mvn clean install package'
         }
