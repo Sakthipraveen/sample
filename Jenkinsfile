@@ -3,6 +3,9 @@ currentBuild.displayName= "Jenkins "+ currentBuild.number
 
 pipeline{
   agent any
+  tools{
+    git 'git'
+  }
 
 
   stages{
