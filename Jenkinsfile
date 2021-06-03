@@ -1,29 +1,33 @@
-pipeline {
-    agent any
-    tools{
-      maven 'Maven3'
-    }
-    stages {
+currentBuild.displayName = currentBuild.number
 
-        stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    // Optionally use a Maven environment you've configured already
-                    withMaven(maven:'Maven3') {
-                        bat 'mvn sonar:sonar'
-                    }
-                }
-                bat 'mvn clean install package'
-            }
+
+pipeline{
+  agent any
+
+
+  stages{
+
+    stage('git integation'){
+      steps{
+        script{
+          git url: 'https://github.com/Sakthipraveen/sample.git'
         }
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                    // true = set pipeline to UNSTABLE, false = don't
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+      }
     }
+
+    stage('static code analysis and maven build'){
+      steps{
+        environment{
+          docker{
+            image 'maven:3-alpine'
+            args '$HOME/.m2:$ROOT/.m2'
+          }
+        }
+
+        script{
+          sh 'mvn clean install package'
+        }
+      }
+    }
+  }
 }
