@@ -5,13 +5,18 @@ pipeline{
   agent any
 
   stages{
+    stage('static code analysis and maven build'){
+      agent{
+        docker{
+          image 'maven:3-alpine'
+          args '-v $HOME/.m2:$root/.m2'
+        }
+      }
 
-    stage('git integation'){
       steps{
-
-          git url: 'https://github.com/Sakthipraveen/sample.git'
-
-        
+        script{
+          sh 'mvn clean install package'
+        }
       }
     }
   }
