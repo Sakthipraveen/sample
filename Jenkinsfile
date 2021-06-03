@@ -3,10 +3,6 @@ currentBuild.displayName= "Jenkins "+ currentBuild.number
 
 pipeline{
   agent any
-  tools{
-    git 'git'
-  }
-
 
   stages{
 
@@ -14,7 +10,7 @@ pipeline{
       steps{
         script{
           git url: 'https://github.com/Sakthipraveen/sample.git'
-          sh 'echo hello'
+          
         }
       }
     }
