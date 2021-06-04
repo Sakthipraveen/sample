@@ -3,14 +3,11 @@ currentBuild.displayName= "Jenkins "+ currentBuild.number
 
 pipeline {
     agent any
-    tools{
-      maven 'Maven3'
-    }
-    stages {
 
-        stage('build && SonarQube analysis') {
+    stages {
+        stage('Git Integration') {
             steps {
-                sh 'mvn clean install package'
+                git url: 'https://github.com/Sakthipraveen/Jenkins'
             }
         }
     }
