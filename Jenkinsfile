@@ -1,21 +1,17 @@
 currentBuild.displayName= "Jenkins "+ currentBuild.number
 
 
-pipeline{
-  agent{
-    docker{
-      image 'maven:3-alpine'
-      args '-v $HOME/.m2:$root/.m2'
+pipeline {
+    agent any
+    tools{
+      maven 'Maven3'
     }
-  }
+    stages {
 
-  stages{
-    stage('static code analysis and maven build'){
-      steps{
-        script{
-          sh 'mvn clean install package'
+        stage('build && SonarQube analysis') {
+            steps {
+                sh 'mvn clean install package'
+            }
         }
-      }
     }
-  }
 }
