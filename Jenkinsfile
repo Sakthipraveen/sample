@@ -11,7 +11,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar') {
                   withMaven(maven:'Maven3') {
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn -e sonar:sonar'
                     }
                 }
                 sh 'mvn clean install package'
