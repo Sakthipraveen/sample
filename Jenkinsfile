@@ -11,7 +11,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar') {
                   sh 'mvn sonar:sonar -Dsonar.projectKey=my-app -Dsonar.host.url=http://15.207.99.15:9000 -Dsonar.login=55fed880424f9979a2e428ffb3a26cacaf5f2528'
-                    
+
                 }
                 sh 'mvn clean install package'
             }
@@ -19,9 +19,12 @@ pipeline {
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                    // true = set pipeline to UNSTABLE, false = don't
-                    waitForQualityGate abortPipeline: true
+                  def qg = waitForQualityGate(){
+                    if (qg.status != 'OK') {
+                         error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                  }
+                    
                 }
             }
         }
