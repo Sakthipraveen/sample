@@ -6,10 +6,10 @@ pipeline {
       maven 'Maven3'
     }
     stages {
-      stage{
+      stage('sonar'){
         steps{
           script{
-            withSonarQubeEnv('sonarserver') {
+            withSonarQubeEnv('sonar') {
               sh "mvn sonar:sonar"
               }
               timeout(time: 1, unit: 'HOURS') {
