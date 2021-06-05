@@ -1,34 +1,40 @@
-currentBuild.displayName = "Devops # "+currentBuild.number
+currentBuild.displayName = "Final_Demo # "+currentBuild.number
 
-pipeline {
-    agent any
-    tools{
-      maven 'Maven3'
-    }
-    stages {
-
-        stage('build && SonarQube analysis') {
-            steps {
-              script{
-                withSonarQubeEnv('sonar') {
-                  sh 'mvn sonar:sonar'
-
-                }
-              }
-                sh 'mvn clean install package'
-            }
+   def getDockerTag(){
+        def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+        return tag
         }
-        stage("Quality Gate") {
-            steps {
-              script{
-                timeout(time: 1, unit: 'MINUTES') {
-                  def qg = waitForQualityGate()
-                  if (qg.status != 'OK') {
-                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                  }
-                }
-              }
-            }
+
+
+pipeline{
+  agent any
+  environment{
+    Docker_tag = getDockerTag()
+  }
+
+  stages{
+    stage('Quality Gate Statuc Check'){
+      agent {
+        docker {
+          image 'maven'
+          args '-v $HOME/.m2:/root/.m2'
         }
+      }
+
+      steps{
+        script{
+          withSonarQubeEnv('sonar') {
+            sh "mvn sonar:sonar"
+          }
+          timeout(time: 1, unit: 'HOURS') {
+            def qg = waitForQualityGate()
+            if (qg.status != 'OK') {
+              error "Pipeline aborted due to quality gate failure: ${qg.status}"
+            }
+          }
+        sh "mvn clean install"
+        }
+      }
     }
+  }
 }
