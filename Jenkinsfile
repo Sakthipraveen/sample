@@ -24,7 +24,7 @@ pipeline{
       steps{
         script{
           withSonarQubeEnv('sonar') {
-            sh "mvn -x sonar:sonar"
+            sh "mvn -X sonar:sonar"
           }
           timeout(time: 1, unit: 'HOURS') {
             def qg = waitForQualityGate()
@@ -32,7 +32,7 @@ pipeline{
               error "Pipeline aborted due to quality gate failure: ${qg.status}"
             }
           }
-        sh "mvn -x clean install"
+        sh "mvn -X clean install"
         }
       }
     }
