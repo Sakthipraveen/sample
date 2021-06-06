@@ -43,7 +43,7 @@ pipeline{
           sh 'docker build . -t sakthipraveen/devops:$Docker_tag'
           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker_password')]) {
 
-            sh 'docker login -u sakthipraveen -p $docker_password'
+            sh 'docker login -u sakthipraveen ---password-stdin $docker_password'
             sh 'docker push sakthipraveen/devops:$Docker_tag'
           }
         }
