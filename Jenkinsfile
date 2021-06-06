@@ -40,7 +40,7 @@ pipeline{
     stage('build'){
       steps{
         script{
-          sh 'docker build . -t sakthipraveen/devops:$Docker_tag --privileged --name jenkins jenkins'
+          sh 'docker build . -t sakthipraveen/devops:$Docker_tag'
           withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
 
             sh 'docker login -u sakthipraveen -p $docker'
