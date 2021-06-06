@@ -22,3 +22,4 @@
       - name: pull an image
         docker_image:
         name: sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
+        source: pull
