@@ -20,6 +20,8 @@
         when: ansible_os_family == "Debian"
 
       - name: pull an image
+        vars:
+          ansible_python_interpreter: /usr/bin/python3
         docker_image:
           name: sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
           source: pull
