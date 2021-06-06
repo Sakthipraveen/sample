@@ -42,7 +42,6 @@ pipeline{
         script{
           sh 'docker build . -t sakthipraveen/devops:$Docker_tag'
           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
-
             sh 'docker login -u sakthipraveen -p $docker'
             sh 'docker push sakthipraveen/devops:$Docker_tag'
           }
