@@ -21,7 +21,7 @@
 
       - name: Install Docker
         yum: name=docker state=present
-        when: present=false
+
 
       - name: Start Docker service
         service:
@@ -29,16 +29,19 @@
           state: started
           enabled: yes
         become: yes
-        when: state=stopped
+
 
       - name: stop an container
         shell: docker stop webapps-container
+        ignore_errors: yes
 
       - name: remove an container
         shell: docker rm webapps-container
+        ignore_errors: yes
 
       - name: remove an image
         shell: docker image rm 22356c53ab39a94d2eb0b1142b567b3eab280539
+        ignore_errors: yes
 
       - name: pull an image
         shell: docker pull sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
