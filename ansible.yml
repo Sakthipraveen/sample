@@ -36,11 +36,11 @@
         ignore_errors: yes
 
       - name: remove an container
-        shell: docker rm -f webapps-container
+        shell: docker rm webapps-container
         ignore_errors: yes
 
       - name: remove an image
-        shell: docker image rm daa7dc3ca1c8
+        shell: docker image rm -f daa7dc3ca1c8
         ignore_errors: yes
 
       - name: pull an image
