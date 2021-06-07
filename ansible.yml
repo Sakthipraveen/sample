@@ -40,7 +40,7 @@
         ignore_errors: yes
 
       - name: remove an image
-        shell: docker image rm 22356c53ab39a94d2eb0b1142b567b3eab280539
+        shell: docker image rm daa7dc3ca1c8
         ignore_errors: yes
 
       - name: pull an image
