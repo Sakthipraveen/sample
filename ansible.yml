@@ -26,11 +26,8 @@
     become: True
     tasks:
       - name: Install Docker
-        package:
-          name: docker-ce
-          state: latest
-          become: yes
-
+        yum: name=docker-ce state=present
+        
       - name: Start Docker service
         service:
           name: docker
