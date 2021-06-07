@@ -36,7 +36,7 @@
         ignore_errors: yes
 
       - name: remove an container
-        shell: docker rm webapps-container
+        shell: docker rm -f webapps-container
         ignore_errors: yes
 
       - name: remove an image
