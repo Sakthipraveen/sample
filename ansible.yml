@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: localhost
     become: true
     gather_facts: True
     tasks:
@@ -19,14 +19,15 @@
         service: name=apache2 enabled=yes state=started
         when: ansible_os_family == "Debian"
 
-  - hosts: slave
-    become: True
-    tasks:
       - name: pull an image
         shell: docker pull sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
 
+  - hosts: slave
+    become: True
+    tasks:
+
+
       - name: docker install on slave
-        
         yum:
           name: docker
           state: present
