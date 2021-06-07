@@ -28,7 +28,7 @@
 
 
       - name: docker install on slave
-        yum:
+        package:
           name: docker
           state: present
           enabled: true
