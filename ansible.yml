@@ -25,10 +25,8 @@
   - hosts: slave
     become: True
     tasks:
-
-
-      - name: docker install on slave
+      - name: Install Docker
         package:
-          name: docker
-          state: present
-          enabled: true
+          name: docker-ce
+          state: latest
+          become: yes
