@@ -44,7 +44,7 @@
         ignore_errors: yes
 
       - name: pull an image
-        shell: docker pull sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
+        shell: docker pull sakthipraveen/devops:docker_tag
 
       - name: start the docker
         shell: docker run --name webapps-container -p 8080:8080 daa7dc3ca1c8
