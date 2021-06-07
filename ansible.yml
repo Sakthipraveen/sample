@@ -20,9 +20,12 @@
         when: ansible_os_family == "Debian"
 
       - name: pull an image
+        hosts: localhost
         shell: docker pull sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
 
-      - name: Docker push to slave
-        shell: docker export sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539 | gzip > csakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539.gz
-        shell: scp sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539.gz ec2-user@13.232.130.147:.
-        shell: zcat sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539.gz | docker import - sakthipraveen/devops:22356c53ab39a94d2eb0b1142b567b3eab280539
+      - name: docker install on slave
+        hosts: slave
+        yum:
+          name: docker
+          state: present
+          enabled: true
