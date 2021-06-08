@@ -40,6 +40,7 @@ pipeline{
     stage('build'){
       steps{
         script{
+          sh 'cp -r ../ansible_pipeline@2/target .'
           sh 'docker build . -t sakthipraveen/devops:$Docker_tag'
           withCredentials([usernamePassword(credentialsId: 'docker_password', passwordVariable: 'docker_password', usernameVariable: 'docker_username')])  {
             sh 'docker login -u $docker_username -p $docker_password'
