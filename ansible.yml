@@ -47,4 +47,4 @@
         shell: docker pull sakthipraveen/devops:docker_tag
 
       - name: start the docker
-        shell: docker run --name webapps-container -p 8080:8080 daa7dc3ca1c8
+        shell: docker run --name webapps-container -p 9090:9090 daa7dc3ca1c8
