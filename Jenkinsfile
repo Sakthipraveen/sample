@@ -55,7 +55,7 @@ pipeline{
         script{
           sh '''final_tag=$(echo $Docker_tag | tr -d ' ')
           echo ${final_tag}test
-          sed -i "s/docker_tag/$final_tag/g"  ansible.yaml
+          sed -i "s/docker_tag/$final_tag/g"  ansible.yml
           '''
         ansiblePlaybook become: true, installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yaml'
         }
