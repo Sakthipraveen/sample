@@ -60,7 +60,7 @@ pipeline{
           sh 'pwd'
           sh 'ifconfig'
 
-        ansiblePlaybook credentialsId: 'ansible', colorized: true, installation: 'ansible', inventory: '/home/ec2-user/sample/hosts', playbook: '/home/ec2-user/sample/ansible.yml'
+        ansiblePlaybook credentialsId: 'ansible', colorized: true, installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yml'
         }
       }
     }
