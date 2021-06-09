@@ -59,7 +59,7 @@ pipeline{
           '''
           sh 'pwd'
           sh 'ifconfig'
-          sh 'ssh ec2-user@35.154.18.243'
+          sh 'ssh -tt ec2-user@35.154.18.243'
 
         ansiblePlaybook credentialsId: 'ansible', colorized: true, installation: 'ansible', inventory: '/home/ec2-user/sample/hosts', playbook: '/home/ec2-user/sample/ansible.yml'
         }
