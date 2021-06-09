@@ -58,7 +58,7 @@ pipeline{
           sed -i "s/docker_tag/$final_tag/g"  ansible.yml
           '''
 
-        ansiblePlaybook colorized: true, installation: 'ansible', inventory: '/home/ec2-user/sample/hosts', playbook: '/home/ec2-user/sample/ansible.yml'
+        ansiblePlaybook colorized: true, installation: 'ansible', inventory: '/sample/hosts', playbook: 'sample/ansible.yml'
         }
       }
     }
