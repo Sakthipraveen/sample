@@ -59,6 +59,7 @@ pipeline{
           '''
           sh 'pwd'
           sh 'ifconfig'
+          sh 'cd /home/ec2-user/sample'
 
         ansiblePlaybook become: true, colorized: true, installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yml'
         }
