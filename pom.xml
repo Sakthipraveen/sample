@@ -17,13 +17,7 @@
   </dependencies>
   <build>
     <plugins>
-      <plugin>
-        <properties>
-          <sonar.projectKey>Sakthipraveen_Sakthipraveen</sonar.projectKey>
-          <sonar.organization>sakthipraveen</sonar.organization>
-          <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-          </properties>
-      <plugin>
+
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
