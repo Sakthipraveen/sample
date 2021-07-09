@@ -33,5 +33,10 @@
         </configuration>
       </plugin>
     </plugins>
+  <properties>
+    <sonar.projectKey>Sakthipraveen_Sakthipraveen</sonar.projectKey>
+    <sonar.organization>sakthipraveen</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
   </build>
 </project>
